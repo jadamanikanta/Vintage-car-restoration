@@ -1,9 +1,9 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Enginerestoration from "../components/enginerestoration.astro";
-import { services } from "../data/services"
+import { services } from "../data/services.js";
 ---
 
 <MainLayout title="Engine">
-<Enginerestoration {...services.engine} />
+  {services?.engine && <Enginerestoration {...services.engine} />}
 </MainLayout>

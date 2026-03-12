@@ -1,11 +1,12 @@
 ---
-import "../css/details.css"
+import "../css/details.css";
+
 const {
   title,
   tagline,
-  description,
-  steps,
-  benefits,
+  description = [],
+  steps = [],
+  benefits = [],
   beforeImage,
   afterImage
 } = Astro.props;
@@ -20,13 +21,13 @@ const {
 
 <section class="section container">
   <h2 class="section-title">About {title}</h2>
-  {description.map((para: string) => <p>{para}</p>)}
+  {description?.map((para: unknown) => <p>{para}</p>)}
 </section>
 
 <section class="section container">
   <h2 class="section-title">Our Restoration Process</h2>
   <div class="grid process-grid">
-    {steps.map((step: { icon: string; title: string; text: string }) => (
+    {steps?.map((step: { icon: unknown; title: unknown; text: unknown; }) => (
       <div class="card">
         <span>{step.icon}</span>
         <h3>{step.title}</h3>
@@ -53,7 +54,7 @@ const {
 <section class="section container">
   <h2 class="section-title">Why Choose Us</h2>
   <div class="grid benefits">
-    {benefits.map((item: { icon: string; title: string; text: string }) => (
+    {benefits?.map((item: { icon: unknown; title: unknown; text: unknown; }) => (
       <div class="card">
         <span>{item.icon}</span>
         <h3>{item.title}</h3>
