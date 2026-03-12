@@ -43,7 +43,7 @@ body {
 
   background:
     linear-gradient(rgba(28,25,23,0.75), rgba(28,25,23,0.75)),
-    url("/src/assets/bodywork.jpg");
+    url("/assets/bodywork.jpg");
 
   background-size: cover;
   background-position: center;

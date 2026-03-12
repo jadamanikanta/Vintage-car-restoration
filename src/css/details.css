@@ -82,7 +82,7 @@ p {
 ========================= */
 
 .hero {
-  background: url('/src/assets/engine.jpg') center/cover no-repeat;
+  background: url('/assets/engine.jpg') center/cover no-repeat;
   height: 90vh;
   display: flex;
   align-items: center;

@@ -38,7 +38,7 @@ body{
 
 .contact-hero{
     height:90vh;
-    background:url('/src/assets/gimg-7.jpg') center/cover fixed no-repeat;
+    background:url('/assets/gimg-7.jpg') center/cover fixed no-repeat;
     display:flex;
     align-items:center;
     justify-content:center;
