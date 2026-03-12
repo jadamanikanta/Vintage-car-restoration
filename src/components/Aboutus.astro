@@ -1,0 +1,179 @@
+---
+import "../css/about.css"
+---
+
+<section class="hero">
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <h2>About Me</h2>
+      <p>
+        We are a team of automotive enthusiasts who strive to preserve the original design 
+        and unique character of classic cars. Our collection consists of the most 
+        exceptional and rare examples.
+      </p>
+    </div>
+  </section>
+
+  
+
+<section class="featured">
+  <div class="featured__container">
+
+    <h2 class="featured__title">Featured Cars</h2>
+
+    <div class="featured__grid">
+
+      
+      <div class="card">
+        <div class="card__image">
+          <img src="/src/assets/feature1.jpg" alt="Chevrolet Chevelle SS">
+        </div>
+        <h3 class="card__title">Chevrolet Chevelle SS</h3>
+        <p class="card__desc">
+          A classic muscle car from the 70s, powered by a strong V8 engine and 
+          famous for its bold design and raw performance.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card__image">
+          <img src="/src/assets/feature2.jpg" alt="Porsche 356A Speedster">
+        </div>
+        <h3 class="card__title">Porsche 356A Speedster</h3>
+        <p class="card__desc">
+          One of the most iconic sports cars ever built. Lightweight,
+          elegant, and designed for pure driving pleasure.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card__image">
+          <img src="/src/assets/feature3.jpg" alt="Mercedes-Benz 190SL">
+        </div>
+        <h3 class="card__title">Mercedes-Benz 190SL</h3>
+        <p class="card__desc">
+          A stylish roadster from the 1950s combining luxury,
+          comfort, and refined engineering.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="card__image">
+          <img src="/src/assets/feature4.jpg" alt="Shelby AC Cobra 427">
+        </div>
+        <h3 class="card__title">Shelby AC Cobra 427</h3>
+        <p class="card__desc">
+          A legendary racing car known for its aggressive styling
+          and powerful V8 engine.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="card__image">
+          <img src="/src/assets/feature5.jpg" alt="Audi S1 Sport Quattro">
+        </div>
+        <h3 class="card__title">Audi S1 Sport Quattro</h3>
+        <p class="card__desc">
+          A rally icon featuring turbocharged power and advanced
+          all-wheel-drive performance.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card">
+        <div class="card__image">
+          <img src="/src/assets/feature6.jpg" alt="Ferrari Dino 246 GT">
+        </div>
+        <h3 class="card__title">Ferrari Dino 246 GT</h3>
+        <p class="card__desc">
+          A beautifully designed Italian sports car offering
+          balance, elegance, and thrilling performance.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="about-story">
+  <div class="about-story__container">
+
+    <!-- Left Image -->
+    <div class="about-story__image">
+      <img src="/src/assets/gimg-7.jpg" alt="Classic Car Workshop">
+    </div>
+
+    <!-- Right Content -->
+    <div class="about-story__content">
+      <h2>Our Story</h2>
+      <p class="about-story__text">
+        We are passionate collectors and restorers of vintage automobiles.
+        Our mission is to preserve the elegance, power, and craftsmanship of
+        classic cars while giving them a new life on modern roads.
+      </p>
+
+      <div class="about-story__features">
+        <div class="feature">
+          <h4>✔ 20+ Years Experience</h4>
+          <p>Expert craftsmanship and restoration excellence.</p>
+        </div>
+
+        <div class="feature">
+          <h4>✔ Authentic Parts</h4>
+          <p>Only genuine and original components used.</p>
+        </div>
+
+        <div class="feature">
+          <h4>✔ Worldwide Clients</h4>
+          <p>Trusted by collectors across the globe.</p>
+        </div>
+      </div>
+
+      <a href="#" class="about-btn">Learn More</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery__container">
+
+    <div class="gallery__item"><img src="/src/assets/gimg-1.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/gimg-2.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/gimg-3.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/gimg-4.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/gimg-5.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/gimg-6.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/gimg-7.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/footerimg.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/slide2.jpg" alt=""></div>
+    <div class="gallery__item"><img src="/src/assets/background-1.jpg" alt=""></div>
+
+  </div>
+</section>
+
+
+<script>
+const items = document.querySelectorAll('.gallery__item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      (entry.target as HTMLElement).style.opacity = "1";
+      (entry.target as HTMLElement).style.transform = "translateY(0)";
+    }
+  });
+}, { threshold: 0.2 });
+
+items.forEach(item => {
+  (item as HTMLElement).style.opacity = "0";
+  (item as HTMLElement).style.transform = "translateY(40px)";
+  (item as HTMLElement).style.transition = "0.6s ease";
+  observer.observe(item);
+});
+</script>

@@ -1,0 +1,314 @@
+---
+import "../css/dashboard.css"
+import Chart from "chart.js/auto";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vintage Admin Dashboard</title>
+
+  
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeSidebar">✕</button>
+        <h2 class="logo">Vintage</h2>
+        
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Vehicles</a>
+            <a href="#">Restoration Progress</a>
+            <a href="#">Customers</a>
+            <a href="#">Payments</a>
+            <a href="#">Reports</a>
+            <a href="#">Settings</a>
+        </nav>
+        
+    </aside>
+<div id="overlay"></div>
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Top Navbar -->
+        <header class="topbar">
+            <button id="menuBtn">☰</button>
+
+            <input type="text" placeholder="Search..." class="search">
+
+            <div class="top-actions">
+                <button id="themeToggle">🌙</button>
+                <div class="profile">
+                    <span>Admin ▾</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Cards -->
+       <section class="cards">
+
+    <div class="card">
+        <div class="card-header">
+            <span class="card-icon">🚗</span>
+            <span class="card-title">Total Vehicles</span>
+        </div>
+        <div class="card-value loading">128</div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <span class="card-icon">🛠️</span>
+            <span class="card-title">Ongoing Restorations</span>
+        </div>
+        <div class="card-value loading">32</div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <span class="card-icon">🏁</span>
+            <span class="card-title">Completed Projects</span>
+        </div>
+        <div class="card-value loading">96</div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <span class="card-icon">💰</span>
+            <span class="card-title">Revenue</span>
+        </div>
+        <div class="card-value loading">$420K</div>
+    </div>
+
+</section>
+
+        <!-- Progress Section -->
+        <section class="progress-section">
+            <h2>Restoration Progress</h2>
+
+            <div class="progress-item">
+                <span>Engine</span>
+                <div class="progress-bar"><div style="width:80%"></div></div>
+            </div>
+
+            <div class="progress-item">
+                <span>Bodywork</span>
+                <div class="progress-bar"><div style="width:65%"></div></div>
+            </div>
+
+            <div class="progress-item">
+                <span>Paint</span>
+                <div class="progress-bar"><div style="width:45%"></div></div>
+            </div>
+
+            <div class="progress-item">
+                <span>Interior</span>
+                <div class="progress-bar"><div style="width:70%"></div></div>
+            </div>
+        </section>
+
+        <!-- Table -->
+        <section class="table-section">
+            <h2>Recent Vehicle Updates</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle</th>
+                        <th>Owner</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1967 Mustang</td>
+                        <td>John Doe</td>
+                        <td>Engine Work</td>
+                        <td>Feb 20</td>
+                    </tr>
+                    <tr>
+                        <td>1955 Chevy</td>
+                        <td>Mary Jane</td>
+                        <td>Painting</td>
+                        <td>Feb 18</td>
+                    </tr>
+                    <tr>
+                        <td>1970 Dodge Charger</td>
+                        <td>David Lee</td>
+                        <td>Interior</td>
+                        <td>Feb 15</td>
+                    </tr>
+                    <tr>
+                        <td>1967 Mustang</td>
+                        <td>John Doe</td>
+                        <td>Engine Work</td>
+                        <td>Feb 20</td>
+                    </tr>
+                    <tr>
+                        <td>1967 Mustang</td>
+                        <td>John Doe</td>
+                        <td>Engine Work</td>
+                        <td>Feb 20</td>
+                    </tr>
+                    <tr>
+                        <td>1967 Mustang</td>
+                        <td>John Doe</td>
+                        <td>Engine Work</td>
+                        <td>Feb 20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Charts Section -->
+<section class="charts-section">
+    <div class="chart-card">
+        <h3>Monthly Revenue</h3>
+        <canvas id="revenueChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h3>Restoration Types</h3>
+        <canvas id="serviceChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h3>Project Status</h3>
+        <canvas id="statusChart"></canvas>
+    </div>
+</section>
+
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const themeToggle = document.getElementById("themeToggle");
+const overlay = document.getElementById("overlay");
+const closeSidebar = document.getElementById("closeSidebar");
+
+// Open sidebar
+menuBtn?.addEventListener("click", () => {
+    sidebar?.classList.add("active");
+    overlay?.classList.add("active");
+});
+
+// Close sidebar
+function closeMenu() {
+    sidebar?.classList.remove("active");
+    overlay?.classList.remove("active");
+}
+
+closeSidebar?.addEventListener("click", closeMenu);
+overlay?.addEventListener("click", closeMenu);
+
+// Theme toggle
+function setTheme(theme: string) {
+    document.body.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+}
+
+themeToggle?.addEventListener("click", () => {
+    const isDark = document.body.classList.contains("dark");
+    setTheme(isDark ? "light" : "dark");
+});
+
+// Load theme
+const savedTheme = localStorage.getItem("theme") || "light";
+setTheme(savedTheme);
+});
+
+// Remove loading effect after delay
+setTimeout(() => {
+    document.querySelectorAll(".loading").forEach(el => {
+        el.classList.remove("loading");
+    });
+}, 1500);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Revenue Line Chart
+    const revenueCtx = document.getElementById("revenueChart");
+
+    if (revenueCtx && window.Chart) {
+        new Chart(revenueCtx, {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                datasets: [{
+                    label: "Revenue ($)",
+                    data: [12000, 19000, 15000, 22000, 28000, 35000],
+                    borderColor: "#c8a96a",
+                    backgroundColor: "rgba(200,169,106,0.2)",
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    // Bar Chart
+    const serviceCtx = document.getElementById("serviceChart");
+
+    if (serviceCtx && window.Chart) {
+        new Chart(serviceCtx, {
+            type: "bar",
+            data: {
+                labels: ["Engine", "Paint", "Interior", "Frame-Off"],
+                datasets: [{
+                    label: "Projects",
+                    data: [12, 19, 8, 5],
+                    backgroundColor: "#c8a96a"
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    // Doughnut Chart
+    const statusCtx = document.getElementById("statusChart");
+
+    if (statusCtx && window.Chart) {
+        new Chart(statusCtx, {
+            type: "doughnut",
+            data: {
+                labels: ["Completed", "Ongoing", "Pending"],
+                datasets: [{
+                    data: [60, 25, 15],
+                    backgroundColor: ["#c8a96a", "#444", "#999"]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+});
+</script>
+</body>
+</html>

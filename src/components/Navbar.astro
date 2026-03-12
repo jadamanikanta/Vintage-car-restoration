@@ -1,0 +1,93 @@
+---
+import "../css/global.css";
+---
+
+<header class="navbar">
+    <div class="nav-container">
+
+        
+        <div class="logo">
+            <span>Vintage</span>Motors
+        </div>
+
+        
+        <ul class="nav-links" id="navLinks">
+
+    <li class="dropdown">
+        <a href="/" class="dropdown-toggle">Home ▾</a>
+        <ul class="dropdown-menu">
+            <li><a href="/home2">Home2</a></li>
+        </ul>
+    </li>
+
+    <li><a href="/about">About Us</a></li>
+
+    <li class="dropdown">
+        <a href="/services" class="dropdown-toggle">Services ▾</a>
+        <ul class="dropdown-menu">
+            <li><a href="/service-details">Full Restoration</a></li>
+            <li><a href="/custom">Custom Fabrication</a></li>
+            <li><a href="/body-work">Body Work</a></li>
+            <li><a href="/paint-restoration">Custom Paint</a></li>
+            <li><a href="/interior-restoration">Interior Restoration</a></li>
+        </ul>
+    </li>
+
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/contact">Contact</a></li>
+
+</ul>
+
+        
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+            <a href="/dashboard" class="dashboard-btn">Dashboard</a>
+            <a href="/signup" class="signup-btn">Sign Up</a>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </div>
+
+    </div>
+</header>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const themeToggle = document.getElementById("themeToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    
+    const body = document.body;
+
+    
+    if (!themeToggle || !menuToggle || !navLinks ) return;
+
+    
+    if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+    }
+
+    themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+            themeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("theme", "light");
+            themeToggle.textContent = "🌙";
+        }
+    });
+
+    
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+   
+
+
+
+
+});
+</script>

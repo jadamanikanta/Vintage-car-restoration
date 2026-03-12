@@ -1,0 +1,89 @@
+---
+import "../css/contact.css"
+---
+
+
+
+
+<!-- =========================
+     PARALLAX HERO SECTION
+========================= -->
+
+<section class="contact-hero">
+    <div class="contact-hero-overlay reveal">
+        <h1 class="gold-heading">Contact Vintage Motors</h1>
+        <p>Where Classic Legends Are Reborn</p>
+    </div>
+</section>
+
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
+
+<section class="vintage-contact reveal">
+
+    <div class="vintage-contact-container">
+
+        <!-- INFO SIDE -->
+        <div class="vintage-contact-info">
+            <h2>Let’s Restore History</h2>
+
+            <div class="vintage-info-box">
+                <span>📍</span>
+                <p>123 Heritage Garage, Classic Street, California</p>
+            </div>
+
+            <div class="vintage-info-box">
+                <span>📞</span>
+                <p>+1 234 567 890</p>
+            </div>
+
+            <div class="vintage-info-box">
+                <span>✉</span>
+                <p>contact@vintagemotors.com</p>
+            </div>
+        </div>
+
+        <!-- GLASS FORM -->
+        <div class="vintage-contact-form glass-card">
+            <h2>Send Message</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<section class="vintage-map-section reveal">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=YOUR_MAP_LINK"
+        loading="lazy"
+        allowfullscreen>
+    </iframe>
+</section>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+    const trigger = window.innerHeight * 0.85;
+
+    reveals.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if(top < trigger){
+            section.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>

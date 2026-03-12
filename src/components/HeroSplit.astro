@@ -1,0 +1,91 @@
+---
+import "../css/home.css";
+---
+
+<section class="hero-split">
+  <div class="hero-wrapper">
+
+    <!-- LEFT IMAGE -->
+    <div class="hero-left">
+      <img src="/src/assets/herosplit.jpg" alt="Classic Car" />
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="hero-right">
+      <div class="hero-content">
+        <h1>
+          AWARD-WINNING <br />
+          CLASSIC RESTORATION <br />
+          & CUSTOM BUILDS
+        </h1>
+
+        <p>
+          Since 1982, Custom Classics auto restoration and auto body
+          has provided restoration services for antiques, muscle cars,
+          exotic cars, and collector vehicles across the nation.
+        </p>
+
+        <a href="/contact" class="hero-btn">
+          CONTACT US
+          <span>›</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector('.testimonial-track') as HTMLElement | null;
+  const cards = document.querySelectorAll('.testimonial-card');
+  const nextBtn = document.querySelector('.testimonial-arrow.right') as HTMLElement | null;
+  const prevBtn = document.querySelector('.testimonial-arrow.left') as HTMLElement | null;
+  const dotsContainer = document.querySelector('.testimonial-dots') as HTMLElement | null;
+
+  let index = 0;
+
+  function updateSlider() {
+    if (!track || !cards[0]) return;
+    const cardWidth = (cards[0] as HTMLElement).offsetWidth + 20;
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+    document.querySelectorAll('.testimonial-dots span')
+      .forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+  }
+
+  // Create dots
+  if (dotsContainer) {
+    cards.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.addEventListener('click', () => {
+        index = i;
+        updateSlider();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % cards.length;
+      updateSlider();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + cards.length) % cards.length;
+      updateSlider();
+    });
+  }
+
+  // Auto Slide
+  setInterval(() => {
+    index = (index + 1) % cards.length;
+    updateSlider();
+  }, 5000);
+
+  updateSlider();
+</script>

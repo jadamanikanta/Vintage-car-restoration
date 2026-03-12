@@ -1,0 +1,88 @@
+---
+import "../css/global.css";
+---
+
+<section class="hero">
+
+  
+  <div class="hero__slides">
+
+    <div class="hero__slide active">
+      <img src="/src/assets/slide1.jpg" alt="Restoration 1">
+    </div>
+
+    <div class="hero__slide">
+      <img src="/src/assets/slide2.jpg" alt="Restoration 2">
+    </div>
+
+    <div class="hero__slide">
+      <img src="/src/assets/slide3.jpg" alt="Restoration 3">
+    </div>
+
+  </div>
+
+  <div class="hero__overlay"></div>
+
+  <!-- CONTENT -->
+  <div class="hero__content">
+
+    <p class="hero__tagline">
+      Classic Car Restoration Experts
+    </p>
+
+    <h1 class="hero__title">
+      Restoring Legends.
+      <span class="hero__highlight">Preserving Heritage.</span>
+    </h1>
+
+    <p class="hero__description">
+      We specialize in bringing timeless automobiles back to life
+      with precision engineering and master craftsmanship.
+    </p>
+
+    <div class="hero__buttons">
+      <a href="/services" class="hero__btn hero__btn--primary">
+        Explore Services
+      </a>
+      <a href="/contact" class="hero__btn hero__btn--secondary">
+        Get a Quote
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ARROWS -->
+  <button class="hero__arrow hero__arrow--left">&#10094;</button>
+  <button class="hero__arrow hero__arrow--right">&#10095;</button>
+
+  
+
+</section>
+<script>
+  const slides = document.querySelectorAll('.hero__slide');
+  const nextBtn = document.querySelector('.hero__arrow--right');
+  const prevBtn = document.querySelector('.hero__arrow--left');
+
+  let current = 0;
+
+  function showSlide(index: number) {
+    slides.forEach((slide) => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+
+  nextBtn?.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
+
+  // Optional Auto Slide
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 5000);
+</script>

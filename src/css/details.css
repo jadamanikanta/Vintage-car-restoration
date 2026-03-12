@@ -1,0 +1,249 @@
+/* =========================
+   ROOT VARIABLES
+========================= */
+
+:root {
+  --bg: #f7f3eb;
+  --section-bg: #ffffff;
+  --card: #ffffff;
+  --text: #e26464;
+  --heading: #2ad34b;
+  --muted: #6b6b6b;
+  --accent: #c8a96a;
+  --border: rgba(0,0,0,0.06);
+  --shadow: rgba(0,0,0,0.08);
+}
+
+/* DARK MODE */
+
+body.dark {
+  --bg: #3d3c3c;
+  --section-bg: #424140;
+  --card: #26211d;
+  --text: #f5f5f5;
+  --heading: #ffffff;
+  --muted: #b5b5b5;
+  --border: rgba(255,255,255,0.08);
+  --shadow: rgba(0,0,0,0.4);
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  font-family: "Georgia", serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background .35s ease, color .35s ease;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1, h2, h3 {
+  color: var(--heading);
+}
+
+p {
+  color: var(--muted);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  background: url('/src/assets/engine.jpg') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(0,0,0,0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hero-overlay h1,
+.hero-overlay p {
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: .5rem;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.process-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.before-after {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.benefits {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+  background: var(--card);
+  padding: 1.6rem;
+  border-radius: 14px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px var(--shadow);
+}
+
+.card h3 {
+  margin-top: .5rem;
+  margin-bottom: .4rem;
+  color: var(--heading);
+}
+
+.card p {
+  color: var(--muted);
+}
+
+/* =========================
+   IMAGES
+========================= */
+
+.image-card {
+  text-align: center;
+}
+
+.img {
+  height: 220px;
+  border-radius: 12px;
+  margin-bottom: .6rem;
+}
+
+.placeholder {
+  background: linear-gradient(135deg, #e0e0e0, #cfcfcf);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--section-bg);
+  border-top: 1px solid var(--border);
+}
+
+.cta-btn {
+  margin-top: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: .9rem 1.8rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.2);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Base (Mobile First) */
+.img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Small devices (≥ 480px) */
+@media (min-width: 480px) {
+  .img {
+    height: 220px;
+  }
+}
+
+/* Tablets (≥ 768px) */
+@media (min-width: 768px) {
+  .img {
+    height: 240px;
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .img {
+    height: 260px;
+  }
+}
+
+/* Large screens (≥ 1280px) */
+@media (min-width: 1280px) {
+  .img {
+    height: 300px;
+  }
+}

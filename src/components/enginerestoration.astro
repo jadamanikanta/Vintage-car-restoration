@@ -1,0 +1,69 @@
+---
+import "../css/details.css"
+const {
+  title,
+  tagline,
+  description,
+  steps,
+  benefits,
+  beforeImage,
+  afterImage
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-overlay">
+    <h1>{title}</h1>
+    <p>{tagline}</p>
+  </div>
+</section>
+
+<section class="section container">
+  <h2 class="section-title">About {title}</h2>
+  {description.map((para: string) => <p>{para}</p>)}
+</section>
+
+<section class="section container">
+  <h2 class="section-title">Our Restoration Process</h2>
+  <div class="grid process-grid">
+    {steps.map((step: { icon: string; title: string; text: string }) => (
+      <div class="card">
+        <span>{step.icon}</span>
+        <h3>{step.title}</h3>
+        <p>{step.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="section container">
+  <h2 class="section-title">Before & After</h2>
+  <div class="grid before-after">
+    <div class="image-card">
+      <img class="img" src={beforeImage} alt="Before" />
+      <p>Before Restoration</p>
+    </div>
+    <div class="image-card">
+      <img class="img" src={afterImage} alt="After" />
+      <p>After Restoration</p>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <h2 class="section-title">Why Choose Us</h2>
+  <div class="grid benefits">
+    {benefits.map((item: { icon: string; title: string; text: string }) => (
+      <div class="card">
+        <span>{item.icon}</span>
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Restore Your Vehicle?</h2>
+  <button class="cta-btn">Request a Quote</button>
+</section>

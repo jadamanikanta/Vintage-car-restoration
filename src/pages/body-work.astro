@@ -1,0 +1,9 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Enginerestoration from "../components/enginerestoration.astro";
+import { services } from "../data/services"
+---
+
+<MainLayout title="Engine">
+<Enginerestoration {...services.body} />
+</MainLayout>

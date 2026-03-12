@@ -1,0 +1,147 @@
+---
+const { blog, related } = Astro.props
+
+const words = blog.content.join(" ").split(" ").length
+const readingTime = Math.ceil(words / 200)
+---
+
+<style>
+.blog-layout {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui;
+}
+
+/* breadcrumb */
+.breadcrumb {
+  padding: 20px 40px;
+  font-size: .85rem;
+  opacity: .7;
+}
+
+/* hero */
+.blog-hero {
+  height: 85vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: end;
+  padding: 40px;
+  color: #fff;
+  position: relative;
+}
+
+.blog-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.2));
+}
+
+.blog-hero > div {
+  position: relative;
+  z-index: 2;
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* meta */
+.blog-meta {
+  padding: 20px 40px;
+  font-size: .9rem;
+  opacity: .8;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* content */
+.blog-content {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  line-height: 1.8;
+}
+
+.blog-content p {
+  margin-bottom: 20px;
+}
+
+/* related */
+.related-section {
+  padding: 40px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+
+.related-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.related-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.related-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 20px 40px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .blog-title { font-size: 1.8rem }
+  .blog-hero { height: 40vh; padding: 20px }
+}
+</style>
+
+<div class="blog-layout">
+
+<section class="blog-hero" style={`background-image:url(${blog.image})`}>
+  <div>
+    <h1 class="blog-title">{blog.title}</h1>
+    <p>{blog.subtitle}</p>
+  </div>
+</section>
+
+<section class="blog-meta">
+  By {blog.author} &bull; {blog.date} &bull; {blog.category} &bull; {readingTime} min read
+</section>
+
+<section class="blog-content">
+  {blog.content.map((p: string) => <p>{p}</p>)}
+</section>
+
+<section class="related-section">
+  <h2>Related Posts</h2>
+  <div class="related-grid">
+    {related.map((item: { id: string; image: string; title: string }) => (
+      <a href={`/blog/${item.id}`} class="related-card">
+        <img src={item.image} alt={item.title}>
+        <div style="padding:15px">
+          <strong>{item.title}</strong>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+</div>

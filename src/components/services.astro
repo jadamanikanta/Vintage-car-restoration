@@ -1,0 +1,185 @@
+---
+import '../css/service.css'
+---
+
+<section class="hero">
+  <div class="hero-content container">
+    <h1>Crafting Automotive Legends</h1>
+    <p>Premium vintage car restoration with precision craftsmanship and timeless elegance.</p>
+  </div>
+</section>
+
+
+<section class="services container">
+  <h2 class="section-title">Our Services</h2>
+
+  <div class="services-grid">
+
+  <div class="card">
+    <div class="card-img">
+      <img src="/src/assets/engine.jpg" alt="Engine Restoration">
+    </div>
+    <h3>Engine Restoration</h3>
+    <p>Complete engine rebuilds restoring original performance and reliability.</p>
+    <a href="/service-details" class="btn">Learn More</a>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="/src/assets/bodywork.jpg" alt="Bodywork">
+    </div>
+    <h3>Bodywork</h3>
+    <p>Precision metal shaping and rust repair to bring back structural beauty.</p>
+    <a href="/body-work" class="btn">Learn More</a>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="/src/assets/painting.jpg" alt="Paint">
+    </div>
+    <h3>Paint</h3>
+    <p>Show-quality finishes with authentic vintage color matching.</p>
+    <a href="/paint-restoration" class="btn">Learn More</a>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="/src/assets/interior.jpg" alt="Interior">
+    </div>
+    <h3>Interior</h3>
+    <p>Luxury upholstery restoration with premium materials.</p>
+    <a href="/interior-restoration" class="btn">Learn More</a>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="/src/assets/fabrication.jpg" alt="Custom Fabrication">
+    </div>
+    <h3>Custom Fabrication</h3>
+    <p>Bespoke parts designed and crafted to perfection.</p>
+    <a href="/custom" class="btn">Learn More</a>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <img src="/src/assets/detailing.jpg" alt="Detailing">
+    </div>
+    <h3>Detailing</h3>
+    <p>Professional detailing to preserve shine and elegance.</p>
+    <a href="/detailing" class="btn">Learn More</a>
+  </div>
+
+</div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">Why Choose Us</h2>
+
+    <div class="features-grid">
+      <div class="feature-box">
+        <h3>Master Craftsmanship</h3>
+        <p>Decades of expertise in vintage restoration.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Authentic Parts</h3>
+        <p>We source genuine and period-correct components.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Premium Quality</h3>
+        <p>Every project meets show-car standards.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Transparent Process</h3>
+        <p>Regular updates throughout restoration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="timeline container">
+  <h2 class="section-title">Our Process</h2>
+
+  <div class="timeline-wrapper">
+
+    <div class="step">
+      <span>1</span>
+      <h3>Inspection</h3>
+      <p>Detailed vehicle assessment and planning.</p>
+    </div>
+
+    <div class="step">
+      <span>2</span>
+      <h3>Disassembly</h3>
+      <p>Careful dismantling and cataloging.</p>
+    </div>
+
+    <div class="step">
+      <span>3</span>
+      <h3>Restoration</h3>
+      <p>Engine, body, and interior restoration.</p>
+    </div>
+
+    <div class="step">
+      <span>4</span>
+      <h3>Final Delivery</h3>
+      <p>Quality inspection and client handover.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Start Your Restoration Journey</h2>
+    <p>Contact our experts today for a personalized consultation.</p>
+    <button class="cta-btn">Get Consultation</button>
+  </div>
+</section>
+<script>
+  const toggleBtn = document.getElementById("themeToggle");
+const body = document.body;
+
+// Load saved theme
+if(toggleBtn && localStorage.getItem("theme") === "dark"){
+  body.classList.add("dark");
+  toggleBtn.textContent = "☀️";
+}
+
+if(toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark");
+
+  if(body.classList.contains("dark")){
+    localStorage.setItem("theme","dark");
+    toggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme","light");
+    toggleBtn.textContent = "🌙";
+  }
+  });
+}
+
+// Mobile menu
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+if(hamburger && navLinks) {
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}
+const learnBtn = document.getElementById('learnBtn');
+if(learnBtn) {
+  learnBtn.addEventListener('click', () => {
+    window.location.href = '/service-details';
+  });
+}
+  </script>
+
